@@ -3,14 +3,7 @@
 > A Behavioral Meta-Analysis & Workflow Architecture Study on Google Gemini.
 
 ``` mermaid
-graph LR
-    A[Link Zero] --> B[Dual Output]
-    B --> C{Critique}
-    C -- Fail --> D[Refine]
-    C -- Pass --> E[Final Synthesis]
-```
-
-``` mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0'}}}%%
 mindmap
   root((Applied LLM Research))
     Workflow Architecture
