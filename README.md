@@ -1,8 +1,8 @@
 # Applied LLM Workflow Research: A Behavioral Meta-Analysis
 
-> Engineering deterministic workflows for Google Gemini via AI Studio.
+> A Behavioral Meta-Analysis & Workflow Architecture Study on Google Gemini.
 
-```
+``` mermaid
 graph LR
     A[Link Zero] --> B[Dual Output]
     B --> C{Critique}
