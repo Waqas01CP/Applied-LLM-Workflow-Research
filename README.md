@@ -2,11 +2,13 @@
 
 > Engineering deterministic workflows for Google Gemini via AI Studio.
 
+```
 graph LR
     A[Link Zero] --> B[Dual Output]
     B --> C{Critique}
     C -- Fail --> D[Refine]
     C -- Pass --> E[Final Synthesis]
+```
 
 This repository serves as a practical demonstration of the principles taught in **Google's Prompting Essentials specialization on Coursera**. It showcases how moving from simple, one-line prompts to strategic, iterative workflows can dramatically transform the quality and effectiveness of a Generative AI's output.
 
