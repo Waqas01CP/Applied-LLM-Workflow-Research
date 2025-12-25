@@ -10,6 +10,23 @@ graph LR
     C -- Pass --> E[Final Synthesis]
 ```
 
+``` mermaid
+mindmap
+  root((Applied LLM Research))
+    Workflow Architecture
+      The Master Workflow
+      Chain of Density
+      Dual Output Protocol
+    Cognitive Structures
+      Tree of Thoughts
+      Logic Isolation
+      Meta-Prompting
+    Safety & Reliability
+      Red Teaming
+      Token Sampling A/B
+      Hallucination Diagnosis
+```
+
 This repository serves as a practical demonstration of the principles taught in **Google's Prompting Essentials specialization on Coursera**. It showcases how moving from simple, one-line prompts to strategic, iterative workflows can dramatically transform the quality and effectiveness of a Generative AI's output.
 
 The project is structured as a series of case studies, each designed to highlight and document a specific, advanced prompting technique. The portfolio itself is a testament to a core finding of the project: that true mastery of AI comes not from crafting a single "perfect prompt," but from designing and executing robust, human-directed **workflows**.
