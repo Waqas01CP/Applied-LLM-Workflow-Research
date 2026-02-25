@@ -124,3 +124,20 @@ This section provides a complete, ordered list of all the case studies and metho
 
 *   **[10.0 - Data Analysis Strategies: A Demonstration](./10.0_Data_Analysis_Strategies.md)**
     *A practical demonstration of using an AI for Text Analysis to extract sentiment and key themes from unstructured user feedback.*
+
+---
+
+## 🛠️ Interactive Methodology Runner
+
+This repository includes a Python CLI utility (`workflow_runner.py`) designed to demonstrate the exact prompt structures and logic flow used in the Master Workflow.
+
+It serves as a **protocol simulator**, allowing you to step through the logic interactively to understand how the "Dual Output" and "Critique" cycles function in practice.
+
+**Usage:**
+```bash
+# Interactive walkthrough of the 6-step Master Workflow
+python workflow_runner.py --interactive
+
+# View specific case study logic (e.g., Red Teaming)
+python workflow_runner.py --case hallucination_red_team
+```
