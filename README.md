@@ -2,23 +2,7 @@
 
 > A Behavioral Meta-Analysis & Workflow Architecture Study on Google Gemini.
 
-``` mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0'}}}%%
-mindmap
-  root((Applied LLM Research))
-    Workflow Architecture
-      The Master Workflow
-      Chain of Density
-      Dual Output Protocol
-    Cognitive Structures
-      Tree of Thoughts
-      Logic Isolation
-      Meta-Prompting
-    Safety & Reliability
-      Red Teaming
-      Token Sampling A/B
-      Hallucination Diagnosis
-```
+![Project Thumbnail](ALLMWR.png)
 
 This repository serves as a practical demonstration of the principles taught in **Google's Prompting Essentials specialization on Coursera**. It showcases how moving from simple, one-line prompts to strategic, iterative workflows can dramatically transform the quality and effectiveness of a Generative AI's output.
 
