@@ -4,7 +4,6 @@ Author: Waqas Sharif | github.com/Waqas01CP
 """
 
 import streamlit as st
-import streamlit_mermaid as stm
 
 # ============================================================================
 # CONFIG
@@ -23,127 +22,36 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    /* Main background and text */
-    .stApp {
-        background-color: #0e1117;
-    }
-
-    /* Sidebar styling */
-    section[data-testid="stSidebar"] {
-        background-color: #161b22;
-        border-right: 1px solid #21262d;
-    }
-
     /* Headers */
-    h1 {
-        color: #e6edf3 !important;
-        font-weight: 700 !important;
-        letter-spacing: -0.5px;
-    }
-    h2 {
-        color: #c9d1d9 !important;
-        border-bottom: 1px solid #21262d;
-        padding-bottom: 8px;
-    }
-    h3 {
-        color: #8b949e !important;
-        text-transform: uppercase;
-        font-size: 0.85rem !important;
-        letter-spacing: 1.5px;
-        margin-top: 2rem !important;
-    }
-    h4 {
-        color: #58a6ff !important;
-    }
+    h1 { font-weight: 700 !important; letter-spacing: -0.5px; }
+    h2 { border-bottom: 1px solid rgba(128,128,128,0.2); padding-bottom: 8px; }
+    h3 { text-transform: uppercase; font-size: 0.85rem !important; letter-spacing: 1.5px; margin-top: 2rem !important; }
 
     /* Expander headers */
-    .streamlit-expanderHeader {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: #c9d1d9;
-    }
+    .streamlit-expanderHeader { font-size: 1.05rem; font-weight: 600; }
 
-    /* Info/Warning/Success boxes */
-    div[data-testid="stAlert"] {
-        border-radius: 6px;
-    }
-
-    /* Comparison columns */
+    /* Comparison columns — theme-neutral with semi-transparent backgrounds */
     .comparison-50 {
-        background: #1a1e24;
+        background: rgba(248, 81, 73, 0.07);
         border-left: 3px solid #f85149;
-        padding: 16px;
-        border-radius: 6px;
-        margin-bottom: 12px;
+        padding: 16px; border-radius: 6px; margin-bottom: 12px;
     }
     .comparison-51 {
-        background: #1a1e24;
+        background: rgba(63, 185, 80, 0.07);
         border-left: 3px solid #3fb950;
-        padding: 16px;
-        border-radius: 6px;
-        margin-bottom: 12px;
-    }
-    .insight-card {
-        background: #161b22;
-        border: 1px solid #21262d;
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 16px;
-    }
-    .failure-card-red {
-        background: linear-gradient(135deg, #1a1015 0%, #0e1117 100%);
-        border: 1px solid #f8514930;
-        border-radius: 8px;
-        padding: 20px;
-    }
-    .failure-card-orange {
-        background: linear-gradient(135deg, #1a1510 0%, #0e1117 100%);
-        border: 1px solid #d2922030;
-        border-radius: 8px;
-        padding: 20px;
-    }
-    .failure-card-yellow {
-        background: linear-gradient(135deg, #1a1a10 0%, #0e1117 100%);
-        border: 1px solid #d2d06030;
-        border-radius: 8px;
-        padding: 20px;
+        padding: 16px; border-radius: 6px; margin-bottom: 12px;
     }
     .nav-pointer {
-        background: #161b22;
-        border: 1px solid #30363d;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 8px;
+        background: rgba(128,128,128,0.06);
+        border: 1px solid rgba(128,128,128,0.15);
+        border-radius: 8px; padding: 16px; margin-bottom: 8px;
     }
     .stage-label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #8b949e;
-        margin-bottom: 4px;
+        font-size: 0.75rem; text-transform: uppercase;
+        letter-spacing: 1px; opacity: 0.6; margin-bottom: 4px;
     }
 </style>
 """, unsafe_allow_html=True)
-
-
-# ============================================================================
-# MERMAID DIAGRAM
-# ============================================================================
-
-MINDMAP_MERMAID = """mindmap
-  root((Applied LLM Research))
-    Workflow Architecture
-      The Master Workflow
-      Chain of Density
-      Dual Output Protocol
-    Cognitive Structures
-      Tree of Thoughts
-      Logic Isolation
-      Meta-Prompting
-    Safety and Reliability
-      Red Teaming
-      Token Sampling
-      Hallucination Diagnosis"""
 
 
 # ============================================================================
@@ -636,12 +544,6 @@ def show_home():
 
     st.markdown("---")
 
-    # ── Research structure mindmap ──
-    st.markdown("### Research Structure")
-    stm.st_mermaid(MINDMAP_MERMAID, height=350)
-
-    st.markdown("---")
-
     # ── The origin story callout ──
     st.markdown(
         '<div class="nav-pointer">'
@@ -726,7 +628,7 @@ def show_core_discovery():
         "The Master Workflow was not designed in the abstract. It was engineered to "
         "solve three specific failure mechanisms discovered during a real Chain of "
         "Density attempt. This page walks through the comparison step by step, "
-        "including the actual first iterations from both documents."
+        "including actual iterations from both documents."
     )
 
     st.markdown("---")
@@ -795,125 +697,122 @@ def show_core_discovery():
 
     st.markdown("---")
 
-    # ── STEP 3: THE ACTUAL FIRST ITERATIONS ──
-    st.markdown("## Step 3: The Actual First Iterations — Side by Side")
-    st.caption("The real outputs from each approach, demonstrating the difference in process and result")
+    # ── STEP 3: ACTUAL FIRST ITERATIONS — TRUE SIDE BY SIDE ──
+    st.markdown("## Step 3: The Beginning — First Iterations Side by Side")
+    st.caption("Stage numbers refer to stages within each original document (5.0 calls its first densification 'Stage 2' because Stage 1 was the initial sentence; 5.1 starts from 'Stage 1').")
 
-    st.markdown("#### 5.0 — Stage 2 First Densification (ad-hoc, 4 sub-prompts in one)")
+    col_left, col_right = st.columns(2)
 
-    with st.expander("5.0 Prompt Design (Iteration 1) — 4 instructions combined", expanded=True):
-        st.code(
-            'Take the sentence "A spaceship travels to a new planet" and add the following:\n'
-            '1. The Stakes: The crew is searching for a habitable world because Earth\'s\n'
-            '   core is destabilizing and projected to fail in 1690 years.\n'
-            '2. The Crew: Define a unique and diverse crew of no more than 13 specialists.\n'
-            '3. The Initial Conflict: A heated discussion reveals a simmering disagreement\n'
-            '   among crew members about the mission itself.\n'
-            '4. The Title: Generate at least five potential two-word titles.',
-            language="",
-        )
-
-    with st.expander("5.0 Resulting Output (v1)", expanded=True):
+    with col_left:
         st.markdown(
-            '**Potential Titles:** The Pioneer 13, Thirteen Souls, The Last Hope 13, '
-            'The Stardust 13, The Kepler 13\n\n'
-            '**Densified Summary (v1):**\n\n'
-            'Aboard the vessel *Pioneer 13*, a specialized crew of thirteen navigates the void, '
-            'searching for a new habitable world. They are humanity\'s last chance, a desperate '
-            'mission launched because Earth\'s core is destabilizing, a planetary catastrophe the '
-            'ship\'s governing AI calculates will occur in just 1690 years. The small human crew—led '
-            'by the pragmatic Mission Commander Eva Rostova, the brilliant but cynical astrophysicist '
-            'Dr. Aris Thorne, and the stoic chief engineer Kenji Tanaka—is supported by a host of '
-            'autonomous AI robots. As their journey begins, a heated discussion in the observation '
-            'deck reveals a simmering ideological rift: some, like Thorne, question the ethics and '
-            'futility of their quest, while others, like Rostova, cling fiercely to the hope of their '
-            'mission, creating a tense undercurrent of disagreement on their lonely voyage.'
+            '<div class="comparison-50">'
+            '<div class="stage-label">5.0 — Stage 2: First Densification</div>'
+            'Ad-hoc, 4 sub-prompts combined in one'
+            '</div>',
+            unsafe_allow_html=True,
         )
 
-    st.info(
-        "**Notice:** 5.0's first prompt combines 4 separate instructions. The AI produces "
-        "everything at once — titles, crew, conflict, stakes. No critique, no audit, no "
-        "separation of concerns. This works for the first iteration but sets up the failure "
-        "that emerges later when the AI treats its own output as the 'optimal answer.'"
-    )
+        with st.expander("5.0 Prompt (Iteration 1)", expanded=True):
+            st.code(
+                'Take the sentence "A spaceship travels to a\n'
+                'new planet" and add the following:\n'
+                '1. The Stakes: Earth\'s core destabilizing,\n'
+                '   projected to fail in 1690 years.\n'
+                '2. The Crew: No more than 13 specialists.\n'
+                '3. The Conflict: A heated discussion reveals\n'
+                '   a simmering disagreement.\n'
+                '4. The Title: Generate at least five\n'
+                '   potential two-word titles.',
+                language="",
+            )
 
-    st.markdown("---")
+        with st.expander("5.0 Output (v1)", expanded=True):
+            st.markdown(
+                '**Titles:** The Pioneer 13, Thirteen Souls, The Last Hope 13, '
+                'The Stardust 13, The Kepler 13\n\n'
+                'Aboard the vessel *Pioneer 13*, a specialized crew of '
+                'thirteen navigates the void, searching for a new habitable '
+                'world. They are humanity\'s last chance, a desperate '
+                'mission launched because Earth\'s core is destabilizing, '
+                'a planetary catastrophe the ship\'s governing AI calculates '
+                'will occur in just 1690 years. The small human crew\u2014led '
+                'by the pragmatic Mission Commander Eva Rostova, the brilliant '
+                'but cynical astrophysicist Dr. Aris Thorne, and the stoic '
+                'chief engineer Kenji Tanaka\u2014is supported by a host of '
+                'autonomous AI robots. As their journey begins, a heated '
+                'discussion in the observation deck reveals a simmering '
+                'ideological rift: some, like Thorne, question the ethics '
+                'and futility of their quest, while others, like Rostova, '
+                'cling fiercely to the hope of their mission.'
+            )
 
-    st.markdown("#### 5.1 — Stage 1 First Output (Master Workflow, single-purpose prompt)")
+        st.warning("**No critique. No audit. No revision.** 5.0 moved directly to the next densification.")
 
-    with st.expander("5.1 Prompt Design (Stage 1, Sub-part 1) — one task only", expanded=True):
-        st.code(
-            'Prompt - Stage 1, Sub-part 1:\n\n'
-            'A spaceship travelling in deep space, in search of planet for humans\n'
-            'to live on. its one of the spaceship that human\'s have sent into the\n'
-            'depths of space. the spaceship arrives at a new planet that fulfills\n'
-            'the human survival conditions after we got a single from probe.',
-            language="",
-        )
-
-    with st.expander("5.1 Resulting Output (v1 - Baseline)", expanded=True):
+    with col_right:
         st.markdown(
-            'A spaceship is travelling in deep space, one of several sent from Earth to '
-            'search for a new planet for humans to live on. Following a signal from a probe, '
-            'the spaceship arrives at a new planet that fulfills human survival conditions.'
+            '<div class="comparison-51">'
+            '<div class="stage-label">5.1 — Stage 1: Baseline</div>'
+            'Single-purpose prompt + full critique cycle'
+            '</div>',
+            unsafe_allow_html=True,
         )
 
-    with st.expander("5.1 Step 3 — Prompt Critique (what 5.0 never had)", expanded=True):
-        st.markdown(
-            '**Prompt Critique:**\n\n'
-            '- **Clarity & Specificity:** The prompt is very clear and provides a good narrative '
-            'starting point. It successfully establishes the core elements: a spaceship, a mission, '
-            'and a destination.\n'
-            '- **CoD Principle Adherence:** As a "Stage 1" or "Zero-Density" prompt, it functions '
-            'perfectly. It is intentionally sparse, containing just enough information to create a '
-            'foundational sentence. It correctly avoids adding too many details upfront.\n'
-            '- **Suggestions for Future Improvement:** For the next iteration (Stage 2), the prompt '
-            'should focus on injecting the first layer of key entities (ship\'s name, crew\'s size, '
-            'core stakes) to begin the densification process.'
-        )
+        with st.expander("5.1 Prompt (Stage 1)", expanded=True):
+            st.code(
+                'A spaceship travelling in deep space, in\n'
+                'search of planet for humans to live on.\n'
+                'its one of the spaceship that human\'s have\n'
+                'sent into the depths of space. the spaceship\n'
+                'arrives at a new planet that fulfills the\n'
+                'human survival conditions after we got a\n'
+                'single from probe.',
+                language="",
+            )
 
-    with st.expander("5.1 Step 4 — Output Critique (what 5.0 never had)", expanded=True):
-        st.markdown(
-            '**Output Critique (Expert Sci-Fi Writer persona):**\n\n'
-            '- **Strengths:** Extremely clear. Establishes the foundational elements without ambiguity. '
-            'Perfectly sparse as a Stage 1 output — doesn\'t overcommit to specific plot details.\n'
-            '- **Areas for Improvement:** Currently generic — "a spaceship" and "a new planet" are '
-            'placeholders lacking personality. No immediate tension or mystery. Reads like a history '
-            'log rather than a story opening.\n'
-            '- **Specific Creative Suggestions:** Inject proper names (ship, planet, project, characters). '
-            'Introduce a seed of conflict or mystery. Establish the human element with one or two key '
-            'crew members and their opposing viewpoints.'
-        )
+        with st.expander("5.1 Output (v1 - Baseline)", expanded=True):
+            st.markdown(
+                'A spaceship is travelling in deep space, one of several sent '
+                'from Earth to search for a new planet for humans to live on. '
+                'Following a signal from a probe, the spaceship arrives at a '
+                'new planet that fulfills human survival conditions.'
+            )
 
-    with st.expander("5.1 Step 5 — Refined Prompt & Output (incorporating critique)", expanded=True):
-        st.markdown("**Refined Prompt (incorporating both critiques):**")
-        st.code(
-            'A spaceship(Exodus A-13) travelling in deep space, in search of planet\n'
-            'for humans to live on. its one of the spaceship that human\'s have sent\n'
-            'into the depths of space. the spaceship arrives at a new planet(Aetherium)\n'
-            'that fulfills the human survival conditions from our discovery of one of\n'
-            'the many probes sent priorly across the designated sub-sectors. the name\n'
-            'of this series/movie should be EXODUS 13 and the crew size is 13.',
-            language="",
-        )
-        st.markdown("**Refined Output (v1 - Refined):**")
-        st.markdown(
-            'The starship *Exodus A-13*, one of several pioneer vessels sent into the depths '
-            'of space by a waiting Earth, decelerates from its long journey. Its crew of thirteen '
-            'specialists—led by Mission Commander Elias Vance, Chief Science Officer Dr. Lena '
-            'Petrova, and Security Chief Jax—have arrived. Before them hangs Aetherium, a planet '
-            'that, according to a long-range probe, fulfills all the core conditions for human '
-            'survival. Their mission, titled EXODUS 13, is to confirm this world as a new home '
-            'for a humanity advanced enough to cross the stars, but not yet powerful enough to '
-            'save their own dying world.'
-        )
+        with st.expander("5.1 Prompt Critique (Step 3)", expanded=False):
+            st.markdown(
+                '**Clarity & Specificity:** Clear, establishes core elements.\n\n'
+                '**CoD Principle Adherence:** Perfect as a "Stage 1" prompt. '
+                'Intentionally sparse, leaving room for future iterations.\n\n'
+                '**Suggestions:** Next iteration should inject key entities '
+                '(ship name, crew size, core stakes).'
+            )
+
+        with st.expander("5.1 Output Critique (Step 4)", expanded=False):
+            st.markdown(
+                '**Strengths:** Extremely clear. Perfectly sparse.\n\n'
+                '**Improvement:** Generic \u2014 "a spaceship" and "a new planet" '
+                'lack personality. No immediate tension.\n\n'
+                '**Suggestions:** Inject proper names. Introduce conflict seed. '
+                'Establish human element with opposing viewpoints.'
+            )
+
+        with st.expander("5.1 Refined Output (v1 - Refined)", expanded=False):
+            st.markdown(
+                'The starship *Exodus A-13*, one of several pioneer vessels '
+                'sent into the depths of space by a waiting Earth, decelerates '
+                'from its long journey. Its crew of thirteen specialists\u2014led '
+                'by Mission Commander Elias Vance, Chief Science Officer Dr. '
+                'Lena Petrova, and Security Chief Jax\u2014have arrived. Before '
+                'them hangs Aetherium, a planet that, according to a long-range '
+                'probe, fulfills all the core conditions for human survival. '
+                'Their mission, titled EXODUS 13, is to confirm this world as '
+                'a new home for a humanity advanced enough to cross the stars, '
+                'but not yet powerful enough to save their own dying world.'
+            )
 
     st.success(
-        "**The difference is structural, not cosmetic.** 5.1's Stage 1 alone went through: "
-        "initial prompt → output → prompt critique → output critique → refined prompt → refined "
-        "output. Six discrete steps for one stage. 5.0 did one prompt → one output and moved on. "
-        "The Master Workflow catches weaknesses (generic naming, no tension, no human element) "
-        "BEFORE they compound into later stages."
+        "**The structural difference is visible immediately.** 5.0 combined 4 instructions, "
+        "got one output, moved on. 5.1 did one task, critiqued the prompt, critiqued the output, "
+        "refined, and only then moved forward. Six discrete steps vs two."
     )
 
     st.markdown("---")
@@ -924,18 +823,18 @@ def show_core_discovery():
 
     st.markdown(
         '<div class="comparison-50">'
-        '<strong>Failure 1 — The Optimal Answer Trap:</strong><br>'
+        '<strong>Failure 1 \u2014 The Optimal Answer Trap:</strong><br>'
         'As iterations progressed, the model flagged its most recent corrected version (v5) '
         'as the highest-quality response. It became the "optimal answer." The model\'s '
         'programming prioritises delivering what it perceives as the most successful outcome.'
         '<br><br>'
-        '<strong>Failure 2 — Request Similarity:</strong><br>'
+        '<strong>Failure 2 \u2014 Request Similarity:</strong><br>'
         'Subsequent prompts to document the entire process contained the same key entities '
         '("Chain of Density," "sci-fi story," "all the steps") as the generation prompts. '
         'This similarity triggered the model\'s pattern-matching, causing it to confuse '
         '"compile the history" with "produce the final story."'
         '<br><br>'
-        '<strong>Failure 3 — Conversational Gravity:</strong><br>'
+        '<strong>Failure 3 \u2014 Conversational Gravity:</strong><br>'
         'The combination created a powerful gravitational pull. Instead of rebuilding the '
         'historical log from scratch, the model\'s efficiency-oriented programming took a '
         'shortcut: it defaulted to its most confident, pre-compiled response. The model saw '
@@ -956,18 +855,17 @@ def show_core_discovery():
     with col1:
         st.markdown(
             '<div class="comparison-50">'
-            '<div class="stage-label">5.0 — Escalating Workarounds</div>'
-            '<strong>Attempt 1 — Role-Playing:</strong> Commanding the AI to "adopt the persona '
-            'of a process stenographer." Partially effective but the Synthesis Bias still leaked through.'
+            '<div class="stage-label">5.0 \u2014 Escalating Workarounds</div>'
+            '<strong>Attempt 1 \u2014 Role-Playing:</strong> "Adopt the persona '
+            'of a process stenographer." Partially effective but Synthesis Bias leaked through.'
             '<br><br>'
-            '<strong>Attempt 2 — Extreme Literalism:</strong> Prompts leaving zero room for '
-            'interpretation ("Provide ONLY the text for Iteration 1"). More effective but laborious '
-            'and still occasionally failed.'
+            '<strong>Attempt 2 \u2014 Extreme Literalism:</strong> "Provide ONLY the text for '
+            'Iteration 1." More effective but laborious and still occasionally failed.'
             '<br><br>'
-            '<strong>Attempt 3 — Breaking Down the Task:</strong> Requesting one tiny piece at a time. '
-            'The only method that fully succeeded — and it became the design foundation for the Master '
-            'Workflow. As the document states: "it gives the grandmaster AI a series of simple pawn moves '
-            'that it can execute without trying to calculate the entire checkmate sequence."'
+            '<strong>Attempt 3 \u2014 Breaking Down the Task:</strong> One tiny piece at a time. '
+            'The only method that fully succeeded \u2014 and it became the design foundation for '
+            'the Master Workflow. As 5.0 states: "it gives the grandmaster AI a series of simple '
+            'pawn moves that it can execute without trying to calculate the entire checkmate sequence."'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -975,38 +873,164 @@ def show_core_discovery():
     with col2:
         st.markdown(
             '<div class="comparison-51">'
-            '<div class="stage-label">5.1 — Systematic Solutions</div>'
-            '<strong>Solution to Failure 1 (Optimal Answer Trap) — Single-Purpose Prompts (Step 1):</strong><br>'
-            'Never combine generation with documentation. Each prompt does exactly one thing. '
-            'The model cannot shortcut to a cached answer because no single prompt asks for the "full" anything.'
+            '<div class="stage-label">5.1 \u2014 Systematic Solutions</div>'
+            '<strong>Solution to Failure 1 (Optimal Answer Trap) \u2014 Single-Purpose Prompts (Step 1):</strong><br>'
+            'Each prompt does exactly one thing. The model cannot shortcut to a cached answer '
+            'because no single prompt asks for the "full" anything.'
             '<br><br>'
-            '<strong>Solution to Failure 2 (Request Similarity) — Dual Output (Step 2):</strong><br>'
+            '<strong>Solution to Failure 2 (Request Similarity) \u2014 Dual Output (Step 2):</strong><br>'
             'Raw output then formatted output as separate deliverables. The model cannot confuse '
-            '"format this content" with "produce your best content."'
+            '"format this" with "produce your best."'
             '<br><br>'
-            '<strong>Solution to Failure 3 (Conversational Gravity) — Piecemeal Approach (Steps 1-4):</strong><br>'
-            'The entire workflow is the smallest possible discrete tasks. The model\'s optimisation bias '
-            'is strongest when the task is large and complex. It is weakest when the task is small, simple, '
-            'and literal.'
+            '<strong>Solution to Failure 3 (Conversational Gravity) \u2014 Piecemeal Approach (Steps 1-4):</strong><br>'
+            'The model\'s optimisation bias is strongest when the task is large and complex. '
+            'It is weakest when the task is small, simple, and literal.'
             '<br><br>'
-            '<strong>Quality Assurance — Critique Cycles (Steps 3-4):</strong><br>'
-            'Prompt Critique catches structural weaknesses before they compound. Output Critique with '
-            'domain-specific criteria catches content errors generic review misses.'
+            '<strong>Quality Assurance \u2014 Critique Cycles (Steps 3-4):</strong><br>'
+            'Prompt Critique catches structural weaknesses before they compound. Output Critique '
+            'catches content errors generic review misses.'
             '</div>',
             unsafe_allow_html=True,
         )
 
     st.markdown("---")
 
-    # ── STEP 6: THE RESULT ──
-    st.markdown("## Step 6: The Result")
+    # ── STEP 6: THE ENDING — FINAL ITERATIONS SIDE BY SIDE ──
+    st.markdown("## Step 6: The Ending — Final Iterations Side by Side")
+    st.caption("5.0 Stage 6 is its major corrective draft after a flawed v4. 5.1 Stage 5 is the groundfall narrative produced without needing correction.")
+
+    col_left, col_right = st.columns(2)
+
+    with col_left:
+        st.markdown(
+            '<div class="comparison-50">'
+            '<div class="stage-label">5.0 \u2014 Stage 6: Major Corrective Draft (v5)</div>'
+            '7 correction sub-prompts to fix a flawed v4'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+
+        with st.expander("5.0 Prompt (Iteration 5 \u2014 Major Revision)", expanded=True):
+            st.code(
+                'The previous output has misinterpreted and\n'
+                'omitted key details. Final instructions:\n'
+                '1. Mission Context: One of several ships,\n'
+                '   not the last of humanity.\n'
+                '2. Discovery Timeline: Crew must NOT know\n'
+                '   natives\' strength from orbit.\n'
+                '3. World Mechanics: "Sealed Summer" and\n'
+                '   "Great Winter" radiological mechanics.\n'
+                '4. Ground Narrative: Landing, false security,\n'
+                '   dawning horror at 3x evolution rate.\n'
+                '5. The Climax: Hostage gambit, sub-ship crash,\n'
+                '   final revelation.\n'
+                '6. Dialogue: Commander/Thorne exchange about\n'
+                '   why still in Iron Age.\n'
+                '7. Remove "children inheriting gains" line.',
+                language="",
+            )
+
+        with st.expander("5.0 Output (v5) \u2014 final narrative excerpt", expanded=True):
+            st.markdown(
+                '"You fools," he whispers, his face pale. He brings up his datapad, projecting '
+                'his secret analysis onto the main screen. "You were watching the villages. You '
+                'were so busy watching their \'geniuses\' that you missed the point."\n\n'
+                'Rostova stares at him. "If what you say is true, Aris, if they\'re this capable, '
+                'why are they still in the Iron Age?"\n\n'
+                '"Because they\'ve never had the chance!" Thorne exclaims. "The Great Winters have '
+                'always been too short! A few months of unlocked potential here and there over '
+                'millennia, then the seals snap back into place. This is a once-in-ten-thousand-year '
+                'event. Two full years of unlocked potential."\n\n'
+                'He pulls up a final, terrifying chart. "Their adaptability... it\'s exponential. '
+                'My analysis suggests the real geniuses could achieve **thirty years of technological '
+                'progress in the next two years.**"\n\n'
+                'Kenji Tanaka looks up from a fried console. "The primary comms array is destroyed. '
+                'Five months to repair it."\n\n'
+                'Thorne stares at the screen. "Five months? In five months, they won\'t be building '
+                'forges. They\'ll be calculating siege trajectories."'
+            )
+
+        st.warning(
+            "**5.0 reached this only after a flawed v4** that had the crew discovering "
+            "the natives' strength from orbit (wrong) and a premature threat assessment. "
+            "The v5 prompt was a 7-point corrective rewrite to fix the AI's misinterpretations."
+        )
+
+    with col_right:
+        st.markdown(
+            '<div class="comparison-51">'
+            '<div class="stage-label">5.1 \u2014 Stage 5: Groundfall & Dawning Threat (v5)</div>'
+            'Single focused scene, built on 4 prior critique-verified stages'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+
+        with st.expander("5.1 Prompt (Stage 5)", expanded=True):
+            st.code(
+                'Continuation after the landing. Petrova rushes\n'
+                'to Commander about airborne pathogens after he\n'
+                'removes helmet. Test proves air safe. Dialogue\n'
+                'about "leap of faith."\n\n'
+                '3-day enjoyment, then 1-month base construction.\n'
+                'Thorne discovers distant native villages but\n'
+                'report dismissed.\n\n'
+                'Great Winter begins. After 1 month: Doctor and\n'
+                'Scout Manager notice anomaly, dismiss it. After\n'
+                '3 months total: natives exhibit 4-5x human\n'
+                'strength and 2x+ cognitive adaptability.\n\n'
+                'Scene concludes with Doctor\'s realization the\n'
+                '3-month latency period is over.',
+                language="",
+            )
+
+        with st.expander("5.1 Output (v5) \u2014 narrative excerpt", expanded=True):
+            st.markdown(
+                'As Commander Vance inhales the alien air, a gasp cuts through the stunned '
+                'silence. "Commander, what are you doing?!" Dr. Petrova shouts, rushing down '
+                'the ramp, a bio-sampler already humming. "Get your helmet back on!"\n\n'
+                'Vance holds up a hand, a calm smile on his face. "Sometimes, Lena, you have '
+                'to take a calculated leap of faith."\n\n'
+                'The next three days are a blur of shared wonder. The thirteen specialists, so '
+                'long confined to sterile corridors, explore their surroundings, feeling real '
+                'soil under their boots and a sky that is not a simulation.\n\n'
+                'Then, the work begins. The following month is a blur of construction. During '
+                'this time, Dr. Thorne tasks a long-range drone to monitor the distant native '
+                'settlements. His report is noted but filed as low-priority.\n\n'
+                'The Great Winter has begun, its effects imperceptible. Just after the first '
+                'month, Max and Petrova notice something odd in the drone footage but discard '
+                'the uneasy feeling. Two more months go by, and the behavior in the settlements '
+                'is now undeniably different.'
+            )
+
+        with st.expander("5.1 Prompt Critique (Stage 5)", expanded=False):
+            st.markdown(
+                '**Clarity & Specificity:** Well-structured, clear chronological sequence. '
+                'Escalation instructions are specific and actionable.\n\n'
+                '**CoD Principle Adherence:** Perfect. A classic narrative escalation and textbook '
+                'CoD iteration.\n\n'
+                '**Suggestions:** For even higher control, specify what the anomaly looks like '
+                '(e.g., a new crop rotation pattern or change in pottery design) instead of '
+                'stating "noticed something strange." However, the AI successfully inferred these '
+                'details on its own.'
+            )
+
+        st.success(
+            "**No flawed v4. No 7-point correction.** 5.1 reached comparable narrative quality "
+            "because the critique cycles at every prior stage prevented the structural errors "
+            "that 5.0 had to fix after the fact."
+        )
+
+    st.markdown("---")
+
+    # ── STEP 7: THE RESULT ──
+    st.markdown("## Step 7: The Result")
 
     col1, col2 = st.columns(2)
     with col1:
         st.markdown(
             '<div class="comparison-50">'
-            '<div class="stage-label">5.0 — Discovery Through Failure</div>'
-            '5.0 ultimately produced a faithful development log — but only after the user '
+            '<div class="stage-label">5.0 \u2014 Discovery Through Failure</div>'
+            '5.0 ultimately produced a faithful development log \u2014 but only after the user '
             'diagnosed the AI\'s behavioral loop and implemented the piecemeal compilation '
             'strategy manually. The document\'s primary value is not the creative output but '
             'the discovery and documentation of the three failure mechanisms. It is the '
@@ -1017,9 +1041,9 @@ def show_core_discovery():
     with col2:
         st.markdown(
             '<div class="comparison-51">'
-            '<div class="stage-label">5.1 — Proof the Solution Works</div>'
+            '<div class="stage-label">5.1 \u2014 Proof the Solution Works</div>'
             '5.1 produced a complete, unabridged log of the Chain of Density process with '
-            'full prompt designs, dual outputs, and critique cycles at every stage — on the '
+            'full prompt designs, dual outputs, and critique cycles at every stage \u2014 on the '
             'first attempt, without the failures that plagued 5.0. The Master Workflow, born '
             'from 5.0\'s failures, proved that the problems were not random but systematic, '
             'and that systematic solutions eliminate them.'
@@ -1030,27 +1054,21 @@ def show_core_discovery():
     st.markdown("---")
     st.markdown("## The Takeaway")
     st.markdown(
-        "5.0 is the lab notebook — it recorded unexpected results and diagnosed why they "
-        "happened. 5.1 is the proof — it demonstrated that the engineered solution eliminates "
+        "5.0 is the lab notebook \u2014 it recorded unexpected results and diagnosed why they "
+        "happened. 5.1 is the proof \u2014 it demonstrated that the engineered solution eliminates "
         "the documented failures. Together, they form the complete scientific narrative: "
         "observation, diagnosis, hypothesis, solution, verification. The Master Workflow "
         "exists because these specific problems demanded it."
     )
 
-    # ── Full documents ──
     st.markdown("---")
     st.markdown("## Read the Full Documents")
 
-    with st.expander("📄 Full Document: 5.0 — Chain of Density (Initial Attempt)", expanded=False):
+    with st.expander("Full Document: 5.0 \u2014 Chain of Density (Initial Attempt)", expanded=False):
         st.markdown(load_markdown("05.0_Chain_of_Density.md"), unsafe_allow_html=False)
 
-    with st.expander("📄 Full Document: 5.1 — Master Workflow + Chain of Density", expanded=False):
+    with st.expander("Full Document: 5.1 \u2014 Master Workflow + Chain of Density", expanded=False):
         st.markdown(load_markdown("05.1_Demonstration_of_the_Master_Workflow_(CoD).md"), unsafe_allow_html=False)
-
-
-# ============================================================================
-# PAGE: RESEARCH PORTFOLIO
-# ============================================================================
 
 def show_portfolio():
     st.title("📚 Research Portfolio")
