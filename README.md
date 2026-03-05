@@ -2,7 +2,7 @@
 
 > A Behavioral Meta-Analysis & Workflow Architecture Study on Google Gemini.
 
-[![Website](https://img.shields.io/badge/Website-Visit-red)](https://applied-llm-workflow-research.streamlit.app/)
+> [Live App: ](https://applied-llm-workflow-research.streamlit.app/)
 
 ![Project Thumbnail](ALLMWR.png)
 
