@@ -4,6 +4,8 @@ Author: Waqas Sharif | github.com/Waqas01CP
 """
 
 import streamlit as st
+import re
+import os
 
 # ============================================================================
 # CONFIG
@@ -563,7 +565,30 @@ def show_home():
     # This gives us the EXACT author's note, methodology, and all 5 insights
     # directly from the source document — not summaries.
     readme_content = load_readme_until_toc()
-    st.markdown(readme_content, unsafe_allow_html=False)
+
+    # Handle images: st.markdown() cannot render local file images.
+    # Extract markdown image references, render them with st.image(),
+    # and display surrounding text with st.markdown().
+    image_pattern = re.compile(r'!\[([^\]]*)\]\(\.?/?([^)]+)\)')
+    parts = image_pattern.split(readme_content)
+
+    # parts alternates: [text, alt_text, filepath, text, alt_text, filepath, ...]
+    i = 0
+    while i < len(parts):
+        if i % 3 == 0:
+            # Text segment
+            text = parts[i].strip()
+            if text:
+                st.markdown(text, unsafe_allow_html=False)
+        elif i % 3 == 2:
+            # Filepath segment — render as image if file exists
+            filepath = parts[i]
+            if os.path.isfile(filepath):
+                st.image(filepath, use_container_width=True)
+            else:
+                st.caption("(Image: " + filepath + ")")
+        # i % 3 == 1 is alt text — skip
+        i += 1
 
     st.markdown("---")
 
@@ -1195,6 +1220,38 @@ def show_core_discovery():
                 "the 3-month latency period. Oracle must provide historical context on past, shorter Great "
                 "Winters to explain the natives' slow overall progress. As debate erupts, the sub-ship must "
                 "crash due to malfunction, severing communication to the mothership."
+            )
+
+        with st.expander("5.1 Refined Output (v5 - Refined) \u2014 critique corrections applied", expanded=False):
+            st.markdown(
+                'As Commander Vance inhales the alien air, a gasp cuts through the stunned silence. '
+                '"Commander, have you lost your mind?!" **Samuel, the Xenobotanist**, shouts, rushing '
+                'down the ramp with a bio-sampler already humming. "We have no idea what airborne '
+                'spores or microbes\u2014"\n\n'
+                'Vance holds up a hand, a calm smile on his face. "Sometimes, Samuel, you have to '
+                'take a calculated leap of faith." He gestures to the vibrant world. "Besides, didn\'t '
+                'Oracle Alpha give us the all-clear?"\n\n'
+                '"The AI\'s orbital analysis is different from a direct particulate sample," **Dr. Petrova** '
+                'adds, following Samuel down the ramp. "It could have missed..." Her voice trails off as '
+                'the sampler chimes, a soft, green light glowing on its display. Negative. All clear. '
+                'Samuel looks relieved, and Petrova concedes, "You\'re right, Commander. I was... too tense."\n\n'
+                'The next three days are a blur of shared wonder. The thirteen specialists, so long confined '
+                'to sterile corridors, explore their immediate surroundings, feeling real soil under their '
+                'boots and a sky that is not a simulation.\n\n'
+                'Then, the work begins. The following month is a blur of construction, the ship\'s '
+                'autonomous robots humming as they assemble the prefabricated structures of the new base. '
+                'During this time, Dr. Thorne, in his capacity as psychologist and observer, tasks a '
+                'long-range drone to monitor the distant native settlements, now 70 to 80 kilometers '
+                'away. His report is noted but filed as low-priority.\n\n'
+                'The Great Winter has begun, its effects imperceptible. Just after the first month of '
+                'construction, Max and Petrova notice something odd in the drone footage but discard '
+                'the uneasy feeling. Two more months go by, and the behavior in the settlements is '
+                'now undeniably different. Dr. Thorne confirms it from a psychological perspective.\n\n'
+                '*[The refined narrative continues through the full discovery sequence. Key corrections '
+                'from the critique cycle are visible: Samuel (Xenobotanist) replaces Petrova in the '
+                'initial panic scene, Thorne\'s psychological observations now drive the early anomaly '
+                'detection, and the physical/cognitive leaps are woven together rather than presented '
+                'as disconnected phenomena. The complete refined output is in the full document below.]*'
             )
 
         st.success(
