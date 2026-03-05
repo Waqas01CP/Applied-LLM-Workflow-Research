@@ -2,6 +2,8 @@
 
 > A Behavioral Meta-Analysis & Workflow Architecture Study on Google Gemini.
 
+[![Website](https://img.shields.io/badge/Website-Visit-red)](https://applied-llm-workflow-research.streamlit.app/)
+
 ![Project Thumbnail](ALLMWR.png)
 
 This repository serves as a practical demonstration of the principles taught in **Google's Prompting Essentials specialization on Coursera**. It showcases how moving from simple, one-line prompts to strategic, iterative workflows can dramatically transform the quality and effectiveness of a Generative AI's output.
