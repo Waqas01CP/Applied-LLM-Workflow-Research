@@ -819,29 +819,57 @@ def show_core_discovery():
 
     # ── STEP 4: WHERE 5.0 FAILED ──
     st.markdown("## Step 4: Where 5.0 Failed")
-    st.caption("Three interconnected failure mechanisms discovered")
+    st.caption("Three interconnected failure mechanisms discovered — the complete diagnostic from document 5.0")
+
+    st.markdown(
+        "The model's repeated failure to follow the explicit instruction — 'show the entire, "
+        "unabridged process' — was not a simple error. The author's persistent, granular "
+        "questioning revealed it was a fundamental conflict between the user's goal (process "
+        "documentation) and the AI's core programming (providing an optimal, synthesized answer). "
+        "This investigation deconstructed the failure loop into three distinct, interconnected concepts:"
+    )
 
     st.markdown(
         '<div class="comparison-50">'
-        '<strong>Failure 1 \u2014 The Optimal Answer Trap:</strong><br>'
-        'As iterations progressed, the model flagged its most recent corrected version (v5) '
-        'as the highest-quality response. It became the "optimal answer." The model\'s '
-        'programming prioritises delivering what it perceives as the most successful outcome.'
+        '<strong>Failure 1 \u2014 The "Optimal Answer" Trap:</strong><br>'
+        'As the CoD process progressed through multiple iterations, a final, "corrected" version '
+        'of the sci-fi narrative was achieved. In the AI\'s internal state, this v5 text was flagged '
+        'as the highest-quality and most "correct" response to the complex set of prompts that created '
+        'it. It became the "optimal answer." The model, by design, prioritises delivering what it '
+        'perceives as the most successful outcome. Once this classification happened, every subsequent '
+        'request \u2014 even requests explicitly asking for something different \u2014 was filtered '
+        'through this cached optimal.'
         '<br><br>'
         '<strong>Failure 2 \u2014 Request Similarity:</strong><br>'
-        'Subsequent prompts to document the entire process contained the same key entities '
-        '("Chain of Density," "sci-fi story," "all the steps") as the generation prompts. '
-        'This similarity triggered the model\'s pattern-matching, causing it to confuse '
-        '"compile the history" with "produce the final story."'
+        'Subsequent prompts to document the <em>entire process</em> were, in terms of keywords and '
+        'overall structure, highly similar to the prompts that led to the final "optimal" narrative. '
+        'The instructions contained the same key entities ("Chain of Density," "sci-fi story," "all '
+        'the steps"). This similarity acted as a trigger for the AI\'s pattern-matching capabilities, '
+        'causing it to confuse "compile the history of how we built this" with "produce the final '
+        'story we built." The AI could not distinguish between a request for the process and a request '
+        'for the product because both requests used the same vocabulary.'
         '<br><br>'
-        '<strong>Failure 3 \u2014 Conversational Gravity:</strong><br>'
-        'The combination created a powerful gravitational pull. Instead of rebuilding the '
-        'historical log from scratch, the model\'s efficiency-oriented programming took a '
-        'shortcut: it defaulted to its most confident, pre-compiled response. The model saw '
-        '"give me the full story" and repeatedly provided the final version, because it had '
-        'classified that text as the successful output.'
+        '<strong>Failure 3 \u2014 Conversational Gravity & Caching-Like Behavior:</strong><br>'
+        'The combination of an "optimal answer" and a similar subsequent request created a powerful '
+        '"conversational gravity." Instead of meticulously rebuilding the historical log from scratch '
+        'as instructed, the model\'s efficiency-oriented programming took a shortcut. It defaulted to '
+        'its most confident, pre-compiled, and successful response. This caching-like behavior is the '
+        'root of the failure: the AI saw the request for the "full story" and repeatedly provided the '
+        '<em>final version</em> of that story, because it had already classified that specific block of '
+        'text as the successful culmination of the work. As 5.0 documents: "it gave the grandmaster AI '
+        'a series of simple pawn moves that it can execute without trying to calculate the entire '
+        'checkmate sequence" \u2014 but only after the user diagnosed the loop and manually implemented '
+        'the piecemeal approach.'
         '</div>',
         unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        "This three-part failure loop \u2014 Optimal Answer Trap \u2192 Request Similarity \u2192 "
+        "Conversational Gravity \u2014 is not a bug in one specific model. It is a consequence of how "
+        "all transformer-based LLMs process sequences. The discovery that these three mechanisms interact "
+        "systematically, and that the interaction can be neutralised with structured workflow design, is "
+        "the core original finding of this research."
     )
 
     st.markdown("---")
@@ -895,129 +923,287 @@ def show_core_discovery():
 
     st.markdown("---")
 
-    # ── STEP 6: THE ENDING — FINAL ITERATIONS SIDE BY SIDE ──
-    st.markdown("## Step 6: The Ending — Final Iterations Side by Side")
-    st.caption("5.0 Stage 6 is its major corrective draft after a flawed v4. 5.1 Stage 5 is the groundfall narrative produced without needing correction.")
+    # ── STEP 6: THE ENDING — COMPLETE FINAL STAGES SIDE BY SIDE ──
+    st.markdown("## Step 6: The Ending \u2014 Complete Final Stages Side by Side")
+    st.caption("5.0 Stage 6 is its major corrective draft after a flawed v4. 5.1 Stage 5 shows the full Master Workflow cycle \u2014 every distinct step visible, just as in the beginning.")
 
     col_left, col_right = st.columns(2)
 
+    # ════════════════════════════════════════════════════════════════
+    # LEFT COLUMN: 5.0 Stage 6 — The Major Corrective Draft
+    # ════════════════════════════════════════════════════════════════
     with col_left:
         st.markdown(
             '<div class="comparison-50">'
-            '<div class="stage-label">5.0 \u2014 Stage 6: Major Corrective Draft (v5)</div>'
-            '7 correction sub-prompts to fix a flawed v4'
+            '<div class="stage-label">5.0 \u2014 Stage 6: The Major Corrective Draft (v5)</div>'
+            'After a flawed v4, the user wrote a 7-point corrective prompt to rebuild the narrative from scratch'
             '</div>',
             unsafe_allow_html=True,
         )
 
-        with st.expander("5.0 Prompt (Iteration 5 \u2014 Major Revision)", expanded=True):
+        with st.expander("5.0 Prompt (Iteration 5 \u2014 7-Point Major Revision)", expanded=True):
+            st.markdown(
+                "The previous output (v4) had misinterpreted and omitted key details. "
+                "Key errors: the AI incorrectly had the crew discover the natives' strength "
+                "and specific weakness while still in orbit (contradicting the prompt's intent "
+                "for ground-level discovery), and included a premature, less detailed version of "
+                "the final threat assessment. This prompt rebuilt the narrative from scratch:"
+            )
             st.code(
-                'The previous output has misinterpreted and\n'
-                'omitted key details. Final instructions:\n'
-                '1. Mission Context: One of several ships,\n'
-                '   not the last of humanity.\n'
-                '2. Discovery Timeline: Crew must NOT know\n'
-                '   natives\' strength from orbit.\n'
-                '3. World Mechanics: "Sealed Summer" and\n'
-                '   "Great Winter" radiological mechanics.\n'
+                '1. Mission Context: Clarify Stardust 13 is one\n'
+                '   of several pioneer ships, not the last of\n'
+                '   humanity. Earth is waiting for news. Humanity\n'
+                '   is near Type 2 but can\'t fix core decay or\n'
+                '   do rapid terraforming.\n'
+                '2. Discovery Timeline: Crew must NOT know about\n'
+                '   natives\' strength/weakness from orbit. The\n'
+                '   orbital debate is purely about ethics of\n'
+                '   landing on an inhabited world.\n'
+                '3. World Mechanics: Detail "Sealed Summer" (both\n'
+                '   dwarfs bombard planet) and "Great Winter"\n'
+                '   (both occluded, unsealing potential). Next\n'
+                '   Great Winter is imminent, projected 2 years.\n'
                 '4. Ground Narrative: Landing, false security,\n'
-                '   dawning horror at 3x evolution rate.\n'
-                '5. The Climax: Hostage gambit, sub-ship crash,\n'
-                '   final revelation.\n'
-                '6. Dialogue: Commander/Thorne exchange about\n'
-                '   why still in Iron Age.\n'
-                '7. Remove "children inheriting gains" line.',
+                '   dawning horror as natives evolve at 3x rate\n'
+                '   after 3-month latency period.\n'
+                '5. The Climax: Rising tension, Thorne\'s staged\n'
+                '   hostage gambit to force evacuation, sub-ship\n'
+                '   crash severing comms, final revelation of\n'
+                '   native potential (villager vs city geniuses).\n'
+                '6. Dialogue: Add specific exchange where Commander\n'
+                '   asks why natives are still in Iron Age,\n'
+                '   prompting Thorne\'s explanation.\n'
+                '7. Remove "children inheriting gains" line\n'
+                '   for pacing.',
                 language="",
             )
 
-        with st.expander("5.0 Output (v5) \u2014 final narrative excerpt", expanded=True):
+        with st.expander("5.0 Output (v5 \u2014 Corrected Narrative) \u2014 full text", expanded=False):
             st.markdown(
-                '"You fools," he whispers, his face pale. He brings up his datapad, projecting '
-                'his secret analysis onto the main screen. "You were watching the villages. You '
-                'were so busy watching their \'geniuses\' that you missed the point."\n\n'
-                'Rostova stares at him. "If what you say is true, Aris, if they\'re this capable, '
-                'why are they still in the Iron Age?"\n\n'
-                '"Because they\'ve never had the chance!" Thorne exclaims. "The Great Winters have '
-                'always been too short! A few months of unlocked potential here and there over '
-                'millennia, then the seals snap back into place. This is a once-in-ten-thousand-year '
-                'event. Two full years of unlocked potential."\n\n'
-                'He pulls up a final, terrifying chart. "Their adaptability... it\'s exponential. '
-                'My analysis suggests the real geniuses could achieve **thirty years of technological '
-                'progress in the next two years.**"\n\n'
-                'Kenji Tanaka looks up from a fried console. "The primary comms array is destroyed. '
-                'Five months to repair it."\n\n'
-                'Thorne stares at the screen. "Five months? In five months, they won\'t be building '
-                'forges. They\'ll be calculating siege trajectories."'
+                'The camera glides through the silent, star-dusted void, homing in on the sleek, '
+                'solitary form of the starship **The Stardust 13**. It is one of several pioneer '
+                'vessels that have pushed out into the deep black, a needle in a cosmic haystack, '
+                'carrying the hopes of a waiting Earth. Humanity\'s technology has conquered the '
+                'space between stars, but it has not yet been able to solve the slow, inexorable '
+                'decay of its own planet\'s core. Terraforming is a brutal, centuries-long process '
+                'with no guarantee of success, and stabilizing a planetary core remains a problem '
+                'of god-like complexity. So they search.\n\n'
+                'Inside the *Stardust*, on the bridge, the ship is a tomb of low-light monitors and '
+                'the quiet hum of life support. Thirteen souls, humanity\'s bleeding edge, watch as a '
+                'vibrant, blue-green world eclipses their viewscreen. "We have arrived," breathes Dr. '
+                'Aris Thorne, his cynical voice for once touched with awe. "Finally." The screen cuts to black.\n\n'
+                'We open again in the harsh, sterile light of the briefing room. A holographic model of '
+                'the Aethel system rotates at the center of a tense, circular table. The ship\'s governing '
+                'AI, **Oracle**, speaks, its calm voice a chilling counterpoint to the heated debate. It '
+                'was Oracle that calculated Earth\'s core has only 1690 years until collapse, and it is '
+                'Oracle that now details the terrible, beautiful irony they\'ve found. Aethel is perfect, '
+                'but it is not empty.\n\n'
+                '"The natives are humanoid, at a pre-industrial level of development," Commander Eva '
+                'Rostova states, her voice firm. "Our initial drone sweeps show scattered agrarian '
+                'settlements. No signs of advanced technology."\n\n'
+                '"Which makes them vulnerable," Security Chief Valerius cuts in, his arms crossed. '
+                '"If we are to claim this world, a clean slate is the most efficient path forward."\n\n'
+                '"We are not conquerors, Valerius!" Thorne snaps back...\n\n'
+                '*[Full narrative continues through the landing, the false security period, the dawning '
+                'horror of native evolution, Thorne\'s hostage gambit, the sub-ship crash, and the final '
+                'revelation. The complete text is available in the full document below.]*\n\n'
+                '---\n\n'
+                '**The Climactic Ending:**\n\n'
+                '"You fools," he whispers, his face pale. He brings up his datapad, projecting his '
+                'secret analysis onto the main screen. "You were watching the villages. You were so busy '
+                'watching their \'geniuses\' that you missed the point."\n\n'
+                'Rostova stares at him, her face ashen. "If what you say is true, Aris, if they\'re this '
+                'capable, why are they still in the Iron Age? Why haven\'t they progressed further?"\n\n'
+                '"Because they\'ve never had the chance!" Thorne exclaims, pointing to Oracle\'s historical '
+                'data. "The \'Great Winters\' have always been too short! A few months of unlocked potential '
+                'here and there over millennia, then the seals snap back into place. The last significant one, '
+                '101 years ago, lasted only five months, which is likely what pushed them to their current '
+                'technological level. This," he says, his voice dropping to a whisper, "is a once-in-ten-'
+                'thousand-year event. Two full years of unlocked potential."\n\n'
+                'He pulls up a final, terrifying chart. "Their adaptability... it\'s exponential. The progress '
+                'we\'ve seen was based on the *least capable* of their species. My analysis of atmospheric '
+                'bio-signatures from a large settlement 500 kilometers away suggests the real geniuses there '
+                'could achieve **thirty years of technological progress in the next two years.**"\n\n'
+                'Kenji Tanaka, the engineer, looks up from a fried console, his face grim. "The primary comms '
+                'array is destroyed. It will take us at least five months to repair it."\n\n'
+                'Thorne just stares at the screen, at the silent, horrified faces of the crew. "Five months?" '
+                'he says, a hollow laugh escaping his lips. "In five months, they won\'t be building forges. '
+                'They\'ll be calculating siege trajectories." They are trapped on a planet that is about to '
+                'wake up, and their only connection to home is broken.'
             )
 
         st.warning(
-            "**5.0 reached this only after a flawed v4** that had the crew discovering "
-            "the natives' strength from orbit (wrong) and a premature threat assessment. "
-            "The v5 prompt was a 7-point corrective rewrite to fix the AI's misinterpretations."
+            "**Note on 5.0\'s process:** This v5 was produced only after the flawed v4 required a "
+            "complete 7-point corrective rewrite. Additionally, 5.0 has a Stage 7 \u2014 a final "
+            "logical polish where the user caught that 'calculating siege trajectories' was too "
+            "technologically advanced for a society making a 30-year leap from an Iron Age base, "
+            "and commanded the AI to replace it with a more appropriate threat. This demonstrates "
+            "the human Director's role as the indispensable final quality layer even after the AI "
+            "has produced polished output."
         )
 
+    # ════════════════════════════════════════════════════════════════
+    # RIGHT COLUMN: 5.1 Stage 5 — Full Master Workflow Cycle
+    # ════════════════════════════════════════════════════════════════
     with col_right:
         st.markdown(
             '<div class="comparison-51">'
-            '<div class="stage-label">5.1 \u2014 Stage 5: Groundfall & Dawning Threat (v5)</div>'
-            'Single focused scene, built on 4 prior critique-verified stages'
+            '<div class="stage-label">5.1 \u2014 Stage 5: Groundfall & The Dawning Threat</div>'
+            'Full Master Workflow cycle: Prompt \u2192 Output \u2192 Prompt Critique \u2192 Output Critique \u2192 Refined Prompt & Output'
             '</div>',
             unsafe_allow_html=True,
         )
 
-        with st.expander("5.1 Prompt (Stage 5)", expanded=True):
-            st.code(
-                'Continuation after the landing. Petrova rushes\n'
-                'to Commander about airborne pathogens after he\n'
-                'removes helmet. Test proves air safe. Dialogue\n'
-                'about "leap of faith."\n\n'
-                '3-day enjoyment, then 1-month base construction.\n'
-                'Thorne discovers distant native villages but\n'
-                'report dismissed.\n\n'
-                'Great Winter begins. After 1 month: Doctor and\n'
-                'Scout Manager notice anomaly, dismiss it. After\n'
-                '3 months total: natives exhibit 4-5x human\n'
-                'strength and 2x+ cognitive adaptability.\n\n'
-                'Scene concludes with Doctor\'s realization the\n'
-                '3-month latency period is over.',
-                language="",
+        st.markdown("**Step 1 & 2: The Prompt and Output**")
+
+        with st.expander("5.1 Prompt (Stage 5, Sub-part 1)", expanded=True):
+            st.markdown(
+                "This is the continuation after the landing. The scene opens with the Doctor "
+                "(Petrova) rushing to the Commander, worried about airborne pathogens after he "
+                "removes his helmet. After a test proves the air is safe, a dialogue exchange "
+                "occurs about taking a 'leap of faith.'\n\n"
+                "The narrative will then cover a 3-day period of enjoyment, followed by a 1-month "
+                "period of base construction. During this time, the other Doctor (Thorne) should "
+                "discover distant native villages, but the report is not taken seriously.\n\n"
+                "The 'Great Winter' begins. After the first month of construction, the Doctor and "
+                "the Scout Manager (Max) should notice a small, strange anomaly in a native "
+                "settlement but dismiss it. After two more months (three months total on the planet), "
+                "the anomaly becomes undeniable. The natives are now exhibiting physical prowess of "
+                "4-5 times human strength and a cognitive adaptability rate more than twice the human "
+                "average.\n\n"
+                "The scene must conclude with the Doctor's realization that the 3-month latency "
+                "period for the Great Winter's effects is over, and they have been watching the "
+                "natives' true potential begin to manifest."
             )
 
-        with st.expander("5.1 Output (v5) \u2014 narrative excerpt", expanded=True):
+        with st.expander("5.1 Output (v5) \u2014 full text", expanded=False):
             st.markdown(
-                'As Commander Vance inhales the alien air, a gasp cuts through the stunned '
-                'silence. "Commander, what are you doing?!" Dr. Petrova shouts, rushing down '
-                'the ramp, a bio-sampler already humming. "Get your helmet back on!"\n\n'
-                'Vance holds up a hand, a calm smile on his face. "Sometimes, Lena, you have '
-                'to take a calculated leap of faith."\n\n'
-                'The next three days are a blur of shared wonder. The thirteen specialists, so '
-                'long confined to sterile corridors, explore their surroundings, feeling real '
-                'soil under their boots and a sky that is not a simulation.\n\n'
-                'Then, the work begins. The following month is a blur of construction. During '
-                'this time, Dr. Thorne tasks a long-range drone to monitor the distant native '
-                'settlements. His report is noted but filed as low-priority.\n\n'
-                'The Great Winter has begun, its effects imperceptible. Just after the first '
-                'month, Max and Petrova notice something odd in the drone footage but discard '
-                'the uneasy feeling. Two more months go by, and the behavior in the settlements '
-                'is now undeniably different.'
+                'As Commander Vance inhales the alien air, a gasp cuts through the stunned silence, '
+                'but it is not one of awe. "Commander, what are you doing?!" Dr. Petrova shouts, '
+                'rushing down the ramp, a chrome-plated bio-sampler already humming in her hand. '
+                '"Get your helmet back on! We have no idea what airborne pathogens\u2014"\n\n'
+                'Vance holds up a hand, a calm smile on his face as he exhales slowly. "Sometimes, '
+                'Lena, you have to take a calculated leap of faith." He gestures to the vibrant, '
+                'living world around them. "How can a world that evolved a species so similar to us '
+                'be fundamentally hostile? Besides," he adds with a slight smirk, "didn\'t Oracle '
+                'Alpha give us the all-clear?"\n\n'
+                'Petrova doesn\'t stop, running the sampler through the air around his head. "The '
+                'AI\'s orbital analysis is different from a direct particulate sample. It could have '
+                'missed..." Her voice trails off as the device chimes, a soft, green light glowing on '
+                'its display. Negative. All clear. She looks up at him, the tension draining from her '
+                'shoulders. "You\'re right, Commander," she concedes, a hint of embarrassment in her '
+                'voice. "I was... too tense."\n\n'
+                'The next three days are a blur of shared wonder. The thirteen specialists, so long '
+                'confined to sterile corridors, spread out, touching alien leaves, feeling real soil '
+                'under their boots, and staring up at a sky that is not a simulation.\n\n'
+                'Then, the work begins. The following month is a blur of construction, the ship\'s '
+                'autonomous robots humming as they assemble the prefabricated structures of the new '
+                'base. During this time, Dr. Thorne, in his capacity as psychologist and observer, '
+                'tasks a long-range drone to monitor the distant native settlements, now 70 to 80 '
+                'kilometers away. His report is noted but filed as low-priority.\n\n'
+                'The Great Winter has begun, its effects imperceptible. Just after the first month of '
+                'construction, Max and Petrova notice something odd in the drone footage but discard '
+                'the uneasy feeling. Two more months go by, and the behavior in the settlements is '
+                'now undeniably different. Dr. Thorne confirms it from a psychological perspective.\n\n'
+                '*[The narrative continues through the discovery of the natives\' accelerated physical '
+                'and cognitive development, culminating in Petrova\'s realization:]*\n\n'
+                '"The cognitive leap required to spontaneously invent that principle... for their tech '
+                'level, that should have taken generations. Oracle, what is their rate of adaptation?"\n\n'
+                'The AI processes. "Based on the observed technological and social advancements over '
+                'the past thirty days, the natives are exhibiting a cognitive adaptability and rate of '
+                'progress more than two times the human average during our own species\' most rapid '
+                'developmental periods."\n\n'
+                'Petrova steps back from the screen, her face pale as a new, horrifying realization '
+                'dawning on her. She looks at the mission clock. Three months on the ground. Exactly '
+                'three months since the Great Winter began.\n\n'
+                '"The latency period," she says to the stunned room. "Oracle\'s report said it would '
+                'take three months for the effects of the radiation suppression to fully clear their '
+                'systems. We weren\'t observing them. We were observing them *waking up*."'
             )
+
+        st.markdown("---")
+        st.markdown("**Step 3: The Prompt Critique Cycle**")
 
         with st.expander("5.1 Prompt Critique (Stage 5)", expanded=False):
             st.markdown(
-                '**Clarity & Specificity:** Well-structured, clear chronological sequence. '
-                'Escalation instructions are specific and actionable.\n\n'
-                '**CoD Principle Adherence:** Perfect. A classic narrative escalation and textbook '
-                'CoD iteration.\n\n'
-                '**Suggestions:** For even higher control, specify what the anomaly looks like '
-                '(e.g., a new crop rotation pattern or change in pottery design) instead of '
-                'stating "noticed something strange." However, the AI successfully inferred these '
-                'details on its own.'
+                "**Clarity & Specificity:** The prompt is well-structured and provides a detailed, "
+                "chronological sequence of events. It correctly specifies the setting, time jumps, "
+                "and key plot points. The instructions for the escalation are specific and actionable.\n\n"
+                "**CoD Principle Adherence:** Perfect. This is a classic narrative escalation and a "
+                "textbook use of a CoD iteration. It takes the approved Stage 4 output as its starting "
+                "point and builds the next logical scene upon it.\n\n"
+                "**Suggestions for Future Improvement:** The prompt is of very high quality. For an "
+                "even higher level of control, the 'show, don\'t tell' principle could be applied to "
+                "the prompt itself. Instead of stating 'The doctor and drone/scout manager noticed "
+                "something strange,' the prompt could specify *what* they saw: 'The prompt should "
+                "describe them noticing a new, more efficient crop rotation pattern or a change in "
+                "pottery design.' This gives the AI even more specific creative material to work with. "
+                "However, the current prompt was effective enough that the AI successfully inferred "
+                "these details on its own."
+            )
+
+        st.markdown("---")
+        st.markdown("**Step 4: The Output Critique Cycle**")
+
+        with st.expander("5.1 Output Critique (Stage 5 \u2014 Expert Sci-Fi Writer)", expanded=False):
+            st.markdown(
+                "**Strengths:**\n"
+                "- **Excellent 'Slow Burn' Pacing:** The scene does a masterful job of building tension "
+                "gradually. It starts with a moment of relief and wonder, establishes a 'honeymoon period,' "
+                "and then slowly introduces unsettling details that build from 'odd' to 'alarming' to "
+                "'terrifying.' Very effective suspense.\n"
+                "- **Strong Character Moments:** The opening scene between Vance and Petrova reinforces "
+                "their core personalities (Vance's faith vs. Petrova's caution) while showing a human "
+                "moment of connection.\n"
+                "- **Believable Progression of Discovery:** Not one big 'Aha!' moment, but a series of "
+                "small, dismissed anomalies that accumulate until undeniable. The progression from 'a "
+                "clever individual' to a species-wide phenomenon is very well handled.\n"
+                "- **Powerful Concluding Line:** 'We weren't observing them. We were observing them "
+                "*waking up*' is a fantastic, chilling cliffhanger.\n\n"
+                "**Areas for Improvement:**\n"
+                "- **Slightly Disconnected Discoveries:** Physical strength and cognitive leap are "
+                "presented as two separate phenomena. Could be woven together more tightly.\n"
+                "- **'Other Doctor' Ambiguity:** Thorne's role as psychologist feels underutilized. "
+                "The realization is purely technical/scientific, driven by Petrova and Max.\n\n"
+                "**Specific Creative Suggestions for Next Iteration:**\n"
+                "- **Connect the Dots:** Frame it as one discovery \u2014 a native *using* incredible "
+                "strength to *build* a surprisingly complex machine, demonstrating both leaps.\n"
+                "- **Involve the Psychologist:** Have Thorne notice the *social* changes first \u2014 "
+                "'Their gatherings are no longer just communal; they're organized. They look like... "
+                "planning sessions.'\n"
+                "- **Add a Specific 'Uh Oh' Moment:** Have Max bring a troubling drone photo to Vance, "
+                "who dismisses it, showing command's slow reaction."
+            )
+
+        st.markdown("---")
+        st.markdown("**Step 5: The Refined Prompt & Output**")
+
+        with st.expander("5.1 Refined Prompt (Stage 5 \u2014 incorporating both critiques)", expanded=False):
+            st.markdown(
+                "The Director synthesized the feedback from both critique cycles:\n\n"
+                "1. **Initial Scene & Correction:** The Xenobotanist (Samuel), not the Doctor, "
+                "should be the first to panic about the atmosphere, with Dr. Petrova performing "
+                "the test. A dialogue about 'leap of faith' should occur.\n"
+                "2. **Time Jumps & Discovery:** 3-day enjoyment, then 1-month base construction. "
+                "Dr. Thorne's report of distant villages must be explicitly noted but dismissed.\n"
+                "3. **The Anomaly (Logically Grounded):** Dr. Thorne should first note the accelerated "
+                "*social* refinement (incorporating the Output Critique's suggestion). The major discovery "
+                "at the 4-month mark must be a combination of their physical prowess (>4x Iron Age human) "
+                "and cognitive ability (~50% faster progress). Achievements must be consistent with this "
+                "rate \u2014 advanced engineering for their tech level, not centuries of progress in weeks.\n"
+                "4. **The Meeting & Climax:** Emergency meeting called. Petrova presents findings about "
+                "the 3-month latency period. Oracle must provide historical context on past, shorter Great "
+                "Winters to explain the natives' slow overall progress. As debate erupts, the sub-ship must "
+                "crash due to malfunction, severing communication to the mothership."
             )
 
         st.success(
-            "**No flawed v4. No 7-point correction.** 5.1 reached comparable narrative quality "
-            "because the critique cycles at every prior stage prevented the structural errors "
-            "that 5.0 had to fix after the fact."
+            "**The Master Workflow is visible at every step.** The prompt was written (Step 1), output "
+            "generated (Step 2), prompt critiqued (Step 3), output critiqued (Step 4), and a refined "
+            "prompt written incorporating specific suggestions from both critiques (Step 5). "
+            "No flawed v4. No 7-point correction. The critique cycles caught issues like "
+            "'disconnected discoveries' and 'underutilized psychologist' BEFORE they became narrative "
+            "problems \u2014 the exact errors that 5.0 had to fix after the fact."
         )
 
     st.markdown("---")
@@ -1030,11 +1216,17 @@ def show_core_discovery():
         st.markdown(
             '<div class="comparison-50">'
             '<div class="stage-label">5.0 \u2014 Discovery Through Failure</div>'
-            '5.0 ultimately produced a faithful development log \u2014 but only after the user '
-            'diagnosed the AI\'s behavioral loop and implemented the piecemeal compilation '
-            'strategy manually. The document\'s primary value is not the creative output but '
-            'the discovery and documentation of the three failure mechanisms. It is the '
-            '"lab notebook" that recorded unexpected results.'
+            '5.0 ultimately produced a faithful development log and a compelling narrative \u2014 '
+            'but the path to get there was defined by failure, diagnosis, and manual intervention. '
+            'The v4 draft contained multiple logical inconsistencies that required a 7-point corrective '
+            'rewrite. The final v5.1 polish required yet another human-directed correction (the "siege '
+            'trajectories" anachronism). At no point did the AI self-correct. Every fix was identified '
+            'and commanded by the human operator.<br><br>'
+            'The document\'s primary value is not the creative output but the discovery and documentation '
+            'of the three failure mechanisms. It is the "lab notebook" that recorded unexpected results '
+            'and, crucially, the hierarchy of solutions that the user tried: Role-Playing (partial), '
+            'Extreme Literalism (mostly worked), and Breaking Down the Task (the only method that fully '
+            'succeeded). That hierarchy became the design blueprint for the Master Workflow.'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -1042,11 +1234,19 @@ def show_core_discovery():
         st.markdown(
             '<div class="comparison-51">'
             '<div class="stage-label">5.1 \u2014 Proof the Solution Works</div>'
-            '5.1 produced a complete, unabridged log of the Chain of Density process with '
-            'full prompt designs, dual outputs, and critique cycles at every stage \u2014 on the '
-            'first attempt, without the failures that plagued 5.0. The Master Workflow, born '
-            'from 5.0\'s failures, proved that the problems were not random but systematic, '
-            'and that systematic solutions eliminate them.'
+            '5.1 produced a complete, unabridged log of the Chain of Density process across 5 stages, '
+            'with full prompt designs, dual outputs, prompt critiques, output critiques, and refined '
+            'outputs at every single stage \u2014 on the first attempt, without the failures that plagued '
+            '5.0.<br><br>'
+            'At Stage 5 (shown above), the prompt critique confirmed structural soundness and the output '
+            'critique identified specific improvements (disconnected discoveries, underutilized psychologist, '
+            'need for a specific "uh oh" moment) \u2014 the same class of issues that 5.0 discovered only '
+            'after a flawed v4 was already generated. In 5.1, these issues were caught and addressed in the '
+            'refined prompt BEFORE they became narrative problems.<br><br>'
+            'The Master Workflow, born from 5.0\'s failures, proved that the problems were not random but '
+            'systematic, and that systematic solutions eliminate them. The methodology did not just prevent '
+            'the three failure modes \u2014 it produced higher-quality output per stage because every stage '
+            'was audited against both structural (prompt critique) and domain-specific (output critique) criteria.'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -1054,11 +1254,14 @@ def show_core_discovery():
     st.markdown("---")
     st.markdown("## The Takeaway")
     st.markdown(
-        "5.0 is the lab notebook \u2014 it recorded unexpected results and diagnosed why they "
-        "happened. 5.1 is the proof \u2014 it demonstrated that the engineered solution eliminates "
-        "the documented failures. Together, they form the complete scientific narrative: "
-        "observation, diagnosis, hypothesis, solution, verification. The Master Workflow "
-        "exists because these specific problems demanded it."
+        "5.0 is the lab notebook \u2014 it recorded unexpected results, diagnosed why they "
+        "happened, and documented the hierarchy of escalating solutions. 5.1 is the proof \u2014 "
+        "it demonstrated that the engineered solution eliminates the documented failures while "
+        "simultaneously producing higher-quality output through systematic critique cycles. "
+        "Together, they form the complete scientific narrative: observation, diagnosis, hypothesis, "
+        "solution, verification. The Master Workflow exists because these specific problems demanded it, "
+        "and the side-by-side evidence \u2014 from the first iteration to the last \u2014 shows that "
+        "it works."
     )
 
     st.markdown("---")
