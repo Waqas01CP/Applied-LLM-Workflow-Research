@@ -2,13 +2,13 @@
 
 > A Behavioral Meta-Analysis & Workflow Architecture Study on Google Gemini.
 
-> [Live App: ](https://applied-llm-workflow-research.streamlit.app/)
+> [Live App](https://applied-llm-workflow-research.streamlit.app/)
 
 ![Project Thumbnail](ALLMWR.png)
 
-This repository serves as a practical demonstration of the principles taught in **Google's Prompting Essentials specialization on Coursera**. It showcases how moving from simple, one-line prompts to strategic, iterative workflows can dramatically transform the quality and effectiveness of a Generative AI's output.
+This repository documents original behavioral research on Google Gemini 2.5 Pro — identifying failure modes in production LLM workflows, naming and structuring them as reproducible constructs, and developing a 5-stage prompting protocol to counter them. The three constructs documented here — **Optimal Answer Trap**, **Final Synthesis Bias**, and **Conversational Gravity** — emerged from controlled case studies and are described in detail in the Insights section below.
 
-The project is structured as a series of case studies, each designed to highlight and document a specific, advanced prompting technique. The portfolio itself is a testament to a core finding of the project: that true mastery of AI comes not from crafting a single "perfect prompt," but from designing and executing robust, human-directed **workflows**.
+The project grew out of Google's Prompting Essentials specialization but produced findings that go well beyond the course material. It is structured as a series of case studies, each investigating a specific failure mode or workflow technique, accompanied by an interactive Streamlit application that makes the findings explorable and the prompt templates runnable.
 
 ### Author's Note on Collaboration and Methodology
 This portfolio is a documented record of a deep, collaborative exploration between a human operator (the author) and a sophisticated AI. It is crucial to understand the dynamic of this project:
